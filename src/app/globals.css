@@ -65,7 +65,6 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   scroll-behavior: smooth;
-  overflow-x: hidden;
 }
 
 body {
@@ -234,9 +233,9 @@ button {
   }
 }
 
-/* Prevent pull-to-refresh on mobile */
+/* Prevent pull-to-refresh on mobile while preserving native scroll */
 body {
-  overscroll-behavior-y: contain;
+  overscroll-behavior-y: none;
 }
 
 /* Force GPU acceleration for smooth animations */
