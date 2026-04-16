@@ -68,6 +68,11 @@
   justify-content: space-between;
 }
 
+.badgeRow {
+  display: flex;
+  gap: var(--space-sm);
+}
+
 .badge {
   display: inline-flex;
   align-items: center;
@@ -91,6 +96,52 @@
 
 .card:active .arrow {
   transform: translateX(3px);
+}
+
+/* Rest day card */
+.restCard {
+  position: relative;
+  padding: var(--space-lg);
+  border-radius: var(--radius-lg);
+  background: rgba(120, 144, 156, 0.04);
+  border: 1px dashed rgba(120, 144, 156, 0.2);
+  overflow: hidden;
+}
+
+.restContent {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
+}
+
+.restIcon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.restHeader {
+  margin-bottom: var(--space-sm);
+}
+
+.restSubtitle {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #78909C;
+}
+
+.restName {
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-secondary);
+}
+
+.restDescription {
+  font-size: 0.8rem;
+  color: var(--text-tertiary);
+  line-height: 1.5;
 }
 
 @media (hover: hover) {

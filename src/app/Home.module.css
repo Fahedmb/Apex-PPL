@@ -13,8 +13,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: calc(var(--safe-top) + var(--space-3xl));
-  padding-bottom: var(--space-xl);
+  padding-top: calc(var(--safe-top) + var(--space-2xl));
+  padding-bottom: var(--space-lg);
   position: relative;
 }
 
@@ -26,7 +26,7 @@
   width: 300px;
   height: 300px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(0, 212, 255, 0.08) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(179, 136, 255, 0.07) 0%, transparent 70%);
   filter: blur(60px);
   pointer-events: none;
 }
@@ -35,7 +35,7 @@
   display: flex;
   align-items: center;
   gap: var(--space-md);
-  margin-bottom: var(--space-md);
+  margin-bottom: var(--space-sm);
 }
 
 .logoIcon {
@@ -50,7 +50,7 @@
   font-size: 3rem;
   font-weight: 800;
   letter-spacing: 0.15em;
-  background: linear-gradient(135deg, #00D4FF 0%, #00E676 50%, #FF8C00 100%);
+  background: linear-gradient(135deg, #00D4FF 0%, #B388FF 50%, #FF5C8D 100%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -58,21 +58,65 @@
 
 .tagline {
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--text-secondary);
-  letter-spacing: 0.15em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   margin-bottom: var(--space-xs);
 }
 
 .subtitle {
-  font-size: 0.875rem;
+  font-size: 0.8rem;
   color: var(--text-tertiary);
+  margin-bottom: var(--space-lg);
+}
+
+/* Week strip */
+.weekStrip {
+  display: flex;
+  gap: var(--space-xs);
+  padding: var(--space-sm) var(--space-sm);
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--glass-border);
+}
+
+.dayDot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 6px 8px;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  min-width: 42px;
+  transition: all 0.2s ease;
+}
+
+.dayDotRest {
+  background: rgba(120, 144, 156, 0.08);
+  border-color: rgba(120, 144, 156, 0.15);
+}
+
+.dayNumber {
+  font-size: 0.8rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-tertiary);
+}
+
+.dayLabel {
+  font-size: 0.55rem;
+  font-weight: 600;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
 /* Cards Section */
 .cardsSection {
   flex: 1;
+  margin-top: var(--space-lg);
 }
 
 .sectionTitle {
@@ -91,5 +135,5 @@
 }
 
 .bottomSpacer {
-  height: calc(var(--space-3xl) + var(--safe-bottom));
+  height: calc(var(--bottom-nav-height) + var(--space-lg) + var(--safe-bottom));
 }

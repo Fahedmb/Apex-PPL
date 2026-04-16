@@ -62,7 +62,7 @@
 .headerStats {
   display: flex;
   align-items: center;
-  gap: var(--space-lg);
+  gap: var(--space-md);
 }
 
 .headerStat {
@@ -73,13 +73,13 @@
 }
 
 .headerStatValue {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 700;
   font-variant-numeric: tabular-nums;
 }
 
 .headerStatLabel {
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   font-weight: 500;
   color: var(--text-tertiary);
   text-transform: uppercase;
@@ -91,12 +91,43 @@
   height: 36px;
 }
 
+/* Timer Section */
+.timerSection {
+  margin: var(--space-sm) 0;
+}
+
+/* Tip Banner */
+.tipBanner {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  border: 1px solid;
+  margin-bottom: var(--space-md);
+}
+
+.tipBannerIcon {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.tipBannerText {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+.tipBannerText strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
 /* Exercise List */
 .exerciseList {
   display: flex;
   flex-direction: column;
   gap: var(--space-sm);
-  margin-top: var(--space-md);
 }
 
 .tapHint {

@@ -20,13 +20,25 @@
   --text-secondary: rgba(255, 255, 255, 0.55);
   --text-tertiary: rgba(255, 255, 255, 0.35);
 
-  /* Accent Colors */
-  --color-push: #00D4FF;
-  --color-push-rgb: 0, 212, 255;
-  --color-pull: #FF8C00;
-  --color-pull-rgb: 255, 140, 0;
-  --color-legs: #00E676;
-  --color-legs-rgb: 0, 230, 118;
+  /* Accent Colors — 7-Day palette */
+  --color-chest: #00D4FF;
+  --color-chest-rgb: 0, 212, 255;
+  --color-back: #FF8C00;
+  --color-back-rgb: 255, 140, 0;
+  --color-quads: #00E676;
+  --color-quads-rgb: 0, 230, 118;
+  --color-shoulders: #B388FF;
+  --color-shoulders-rgb: 179, 136, 255;
+  --color-hamstrings: #FF5C8D;
+  --color-hamstrings-rgb: 255, 92, 141;
+  --color-arms: #FFB300;
+  --color-arms-rgb: 255, 179, 0;
+  --color-rest: #78909C;
+  --color-rest-rgb: 120, 144, 156;
+
+  /* Warmup accent */
+  --color-warmup: #FF7043;
+  --color-warmup-rgb: 255, 112, 67;
 
   /* Spacing */
   --space-xs: 4px;
@@ -49,6 +61,9 @@
   --safe-bottom: env(safe-area-inset-bottom, 0px);
   --safe-left: env(safe-area-inset-left, 0px);
   --safe-right: env(safe-area-inset-right, 0px);
+
+  /* Bottom Nav */
+  --bottom-nav-height: 72px;
 }
 
 /* --- Reset & Base --- */
@@ -84,7 +99,7 @@ body::before {
   width: 80%;
   height: 80%;
   border-radius: 50%;
-  background: radial-gradient(ellipse, rgba(0, 212, 255, 0.06) 0%, transparent 70%);
+  background: radial-gradient(ellipse, rgba(0, 212, 255, 0.05) 0%, transparent 70%);
   pointer-events: none;
   z-index: 0;
 }
@@ -97,7 +112,7 @@ body::after {
   width: 70%;
   height: 70%;
   border-radius: 50%;
-  background: radial-gradient(ellipse, rgba(255, 140, 0, 0.04) 0%, transparent 70%);
+  background: radial-gradient(ellipse, rgba(179, 136, 255, 0.04) 0%, transparent 70%);
   pointer-events: none;
   z-index: 0;
 }
@@ -219,6 +234,16 @@ button {
   to { opacity: 1; }
 }
 
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes countdown-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
 /* --- Touch Optimizations --- */
 @media (hover: none) and (pointer: coarse) {
   .glass-card:hover {
@@ -242,4 +267,16 @@ body {
 .gpu-accelerated {
   will-change: transform;
   transform: translateZ(0);
+}
+
+/* --- Input Utility Styles --- */
+input[type="number"],
+input[type="text"] {
+  -moz-appearance: textfield;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }

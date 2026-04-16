@@ -1,15 +1,22 @@
 import type { Metadata, Viewport } from 'next'
-import { Inter } from 'next/font/google'
+import { Inter, Outfit } from 'next/font/google'
 import './globals.css'
 
 const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
+  variable: '--font-inter',
+})
+
+const outfit = Outfit({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-outfit',
 })
 
 export const metadata: Metadata = {
-  title: 'APEX — Gym Workout Guide',
-  description: 'Your personal Push/Pull/Legs workout guide with animated exercise demonstrations.',
+  title: 'APEX — Fahed\'s Workout Guide',
+  description: 'Your personal 7-day hypertrophy workout guide with animated exercise demos, warmup routines, and calorie calculator.',
   manifest: '/manifest.json',
   appleWebApp: {
     capable: true,
@@ -33,11 +40,11 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={inter.className}>
+    <html lang="en" className={`${inter.variable} ${outfit.variable}`}>
       <head>
         <link rel="apple-touch-icon" href="/icons/icon-192.png" />
       </head>
-      <body>
+      <body style={{ fontFamily: 'var(--font-inter), system-ui, sans-serif' }}>
         {children}
       </body>
     </html>

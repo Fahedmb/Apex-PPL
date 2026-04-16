@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { workouts } from '@/data/workouts';
 import WorkoutCard from '@/components/WorkoutCard';
+import BottomNav from '@/components/BottomNav';
 import styles from './Home.module.css';
 
 export default function HomePage() {
@@ -27,15 +28,15 @@ export default function HomePage() {
               <defs>
                 <linearGradient id="grad1" x1="4" y1="4" x2="36" y2="20">
                   <stop stopColor="#00D4FF" />
-                  <stop offset="1" stopColor="#00E676" />
+                  <stop offset="1" stopColor="#B388FF" />
                 </linearGradient>
                 <linearGradient id="grad2" x1="4" y1="12" x2="20" y2="36">
                   <stop stopColor="#00D4FF" />
                   <stop offset="1" stopColor="#FF8C00" />
                 </linearGradient>
                 <linearGradient id="grad3" x1="36" y1="12" x2="20" y2="36">
-                  <stop stopColor="#00E676" />
-                  <stop offset="1" stopColor="#FF8C00" />
+                  <stop stopColor="#B388FF" />
+                  <stop offset="1" stopColor="#FF5C8D" />
                 </linearGradient>
               </defs>
             </svg>
@@ -49,7 +50,7 @@ export default function HomePage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          Push · Pull · Legs
+          Fahed&apos;s Routine
         </motion.p>
 
         <motion.p
@@ -58,8 +59,31 @@ export default function HomePage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.35 }}
         >
-          Your workout. Perfected.
+          1 muscle group · 5 exercises · 4×12
         </motion.p>
+
+        {/* Weekly overview strip */}
+        <motion.div
+          className={styles.weekStrip}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.45 }}
+        >
+          {workouts.map((w) => (
+            <div
+              key={w.id}
+              className={`${styles.dayDot} ${w.isRestDay ? styles.dayDotRest : ''}`}
+              style={!w.isRestDay ? { background: `${w.color}25`, borderColor: `${w.color}40` } : undefined}
+            >
+              <span className={styles.dayNumber} style={!w.isRestDay ? { color: w.color } : undefined}>
+                {w.dayNumber}
+              </span>
+              <span className={styles.dayLabel}>
+                {w.isRestDay ? 'Rest' : w.name.slice(0, 4)}
+              </span>
+            </div>
+          ))}
+        </motion.div>
       </div>
 
       {/* Workout Cards */}
@@ -68,9 +92,9 @@ export default function HomePage() {
           className={styles.sectionTitle}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
+          transition={{ duration: 0.5, delay: 0.5 }}
         >
-          Today&apos;s Split
+          Weekly Split
         </motion.h2>
 
         <div className={styles.cardsList}>
@@ -80,8 +104,10 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* Bottom spacer for safe area */}
+      {/* Bottom spacer for nav */}
       <div className={styles.bottomSpacer} />
+
+      <BottomNav />
     </div>
   );
 }
