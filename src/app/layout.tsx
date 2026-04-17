@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from 'next'
 import { Inter, Outfit } from 'next/font/google'
 import './globals.css'
+import { TimerProvider } from '@/components/TimerProvider'
+import FloatingTimer from '@/components/FloatingTimer'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -45,7 +47,10 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/icons/icon-192.png" />
       </head>
       <body style={{ fontFamily: 'var(--font-inter), system-ui, sans-serif' }}>
-        {children}
+        <TimerProvider>
+          <FloatingTimer />
+          {children}
+        </TimerProvider>
       </body>
     </html>
   )

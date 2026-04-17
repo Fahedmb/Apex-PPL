@@ -85,7 +85,7 @@ export const workouts: Workout[] = [
         target: 'Shoulder Capsule',
         repsOrDuration: '20 reps each way',
         rationale: 'Synovial fluid production in the glenohumeral joint.',
-        gifUrl: `${GIF_BASE}/3358.gif`,
+        gifUrl: `${GIF_BASE}/3360.gif`,
       },
     ],
     exercises: [
@@ -114,7 +114,7 @@ export const workouts: Workout[] = [
         reps: '12',
         tip: 'Lean forward slightly to emphasize the chest. Control the descent.',
         muscleGroup: 'Lower Chest',
-        gifUrl: `${GIF_BASE}/0188.gif`,
+        gifUrl: `${GIF_BASE}/0716.gif`,
       },
       {
         id: 'cable-chest-fly',
@@ -123,7 +123,7 @@ export const workouts: Workout[] = [
         reps: '12',
         tip: 'Maintain a slight bend in the elbows. Squeeze at the center.',
         muscleGroup: 'Chest',
-        gifUrl: `${GIF_BASE}/0160.gif`,
+        gifUrl: `${GIF_BASE}/1269.gif`,
       },
       {
         id: 'decline-bench-press',
@@ -313,7 +313,7 @@ export const workouts: Workout[] = [
         reps: '12',
         tip: 'Take long strides. Keep your torso upright and core braced.',
         muscleGroup: 'Quads / Glutes',
-        gifUrl: `${GIF_BASE}/0291.gif`,
+        gifUrl: `${GIF_BASE}/0381.gif`,
       },
       {
         id: 'leg-extension',
@@ -422,7 +422,7 @@ export const workouts: Workout[] = [
         reps: '12',
         tip: 'Rotate palms from facing you to facing forward as you press up.',
         muscleGroup: 'All Delts',
-        gifUrl: `${GIF_BASE}/0061.gif`,
+        gifUrl: `${GIF_BASE}/0058.gif`,
       },
       {
         id: 'upright-row',
@@ -431,7 +431,7 @@ export const workouts: Workout[] = [
         reps: '12',
         tip: 'Use a wide grip to reduce shoulder impingement. Pull to chest height.',
         muscleGroup: 'Side Delts / Traps',
-        gifUrl: `${GIF_BASE}/0148.gif`,
+        gifUrl: `${GIF_BASE}/0149.gif`,
       },
     ],
   },
@@ -561,7 +561,7 @@ export const workouts: Workout[] = [
         target: 'Forearm / Tendons',
         repsOrDuration: '20 each way',
         rationale: 'Promoting tendon elasticity and blood flow.',
-        gifUrl: `${GIF_BASE}/3657.gif`,
+        gifUrl: `${GIF_BASE}/1427.gif`,
       },
       {
         id: 'arms-warmup-3',
@@ -638,7 +638,7 @@ export const workouts: Workout[] = [
         reps: '12',
         tip: 'Keep torso upright to target triceps. Full depth, controlled ascent.',
         muscleGroup: 'Triceps',
-        gifUrl: `${GIF_BASE}/0188.gif`,
+        gifUrl: `${GIF_BASE}/0716.gif`,
       },
     ],
   },

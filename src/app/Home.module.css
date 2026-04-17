@@ -6,6 +6,50 @@
   margin: 0 auto;
   padding: 0 var(--space-md);
   position: relative;
+  overflow-x: hidden;
+}
+
+/* Ambient orbs */
+.ambientOrb1 {
+  position: fixed;
+  top: -120px;
+  left: -80px;
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 212, 255, 0.06) 0%, transparent 70%);
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+  animation: float 12s ease-in-out infinite;
+}
+
+.ambientOrb2 {
+  position: fixed;
+  top: 40%;
+  right: -100px;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(179, 136, 255, 0.05) 0%, transparent 70%);
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+  animation: float 15s ease-in-out infinite reverse;
+}
+
+.ambientOrb3 {
+  position: fixed;
+  bottom: -80px;
+  left: 30%;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 92, 141, 0.04) 0%, transparent 70%);
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+  animation: float 18s ease-in-out infinite;
 }
 
 /* Hero */
@@ -14,69 +58,110 @@
   flex-direction: column;
   align-items: center;
   padding-top: calc(var(--safe-top) + var(--space-2xl));
-  padding-bottom: var(--space-lg);
+  padding-bottom: var(--space-md);
   position: relative;
-}
-
-.heroGlow {
-  position: absolute;
-  top: -60px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(179, 136, 255, 0.07) 0%, transparent 70%);
-  filter: blur(60px);
-  pointer-events: none;
+  z-index: 1;
 }
 
 .logoContainer {
-  display: flex;
-  align-items: center;
-  gap: var(--space-md);
-  margin-bottom: var(--space-sm);
+  position: relative;
+  margin-bottom: var(--space-md);
 }
 
-.logoIcon {
-  width: 48px;
-  height: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.logoGlow {
+  position: absolute;
+  inset: -40px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 212, 255, 0.12) 0%, rgba(179, 136, 255, 0.06) 50%, transparent 70%);
+  filter: blur(40px);
+  pointer-events: none;
+  animation: pulse-glow 4s ease-in-out infinite;
 }
 
 .logo {
-  font-size: 3rem;
-  font-weight: 800;
+  font-family: var(--font-outfit), system-ui, sans-serif;
+  font-size: 4rem;
+  font-weight: 900;
   letter-spacing: 0.15em;
-  background: linear-gradient(135deg, #00D4FF 0%, #B388FF 50%, #FF5C8D 100%);
+  background: linear-gradient(135deg, #00D4FF 0%, #B388FF 40%, #FF5C8D 75%, #FFB300 100%);
+  background-size: 200% 200%;
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  animation: shimmer 6s ease-in-out infinite;
+  position: relative;
+  z-index: 1;
 }
 
 .tagline {
-  font-size: 1rem;
+  font-size: 1.05rem;
   font-weight: 600;
   color: var(--text-secondary);
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   margin-bottom: var(--space-xs);
 }
 
 .subtitle {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   color: var(--text-tertiary);
   margin-bottom: var(--space-lg);
+  letter-spacing: 0.04em;
+}
+
+/* Stats row */
+.statsRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+  padding: var(--space-md) var(--space-xl);
+  background: var(--bg-card);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--space-lg);
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.statValue {
+  font-size: 1.4rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  background: linear-gradient(135deg, #00D4FF, #B388FF);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.statLabel {
+  font-size: 0.6rem;
+  font-weight: 600;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.statDivider {
+  width: 1px;
+  height: 30px;
+  background: var(--glass-border);
 }
 
 /* Week strip */
 .weekStrip {
   display: flex;
-  gap: var(--space-xs);
-  padding: var(--space-sm) var(--space-sm);
+  gap: 5px;
+  padding: var(--space-sm);
   background: var(--bg-card);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
   border-radius: var(--radius-lg);
   border: 1px solid var(--glass-border);
 }
@@ -86,16 +171,16 @@
   flex-direction: column;
   align-items: center;
   gap: 2px;
-  padding: 6px 8px;
+  padding: 6px 7px;
   border-radius: var(--radius-sm);
   border: 1px solid transparent;
-  min-width: 42px;
+  min-width: 40px;
   transition: all 0.2s ease;
 }
 
 .dayDotRest {
-  background: rgba(120, 144, 156, 0.08);
-  border-color: rgba(120, 144, 156, 0.15);
+  background: rgba(120, 144, 156, 0.06);
+  border-color: rgba(120, 144, 156, 0.12);
 }
 
 .dayNumber {
@@ -106,7 +191,7 @@
 }
 
 .dayLabel {
-  font-size: 0.55rem;
+  font-size: 0.5rem;
   font-weight: 600;
   color: var(--text-tertiary);
   text-transform: uppercase;
@@ -116,7 +201,16 @@
 /* Cards Section */
 .cardsSection {
   flex: 1;
-  margin-top: var(--space-lg);
+  margin-top: var(--space-xl);
+  position: relative;
+  z-index: 1;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-md);
 }
 
 .sectionTitle {
@@ -125,7 +219,16 @@
   color: var(--text-tertiary);
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  margin-bottom: var(--space-md);
+}
+
+.sectionBadge {
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--text-tertiary);
+  background: var(--bg-card);
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--glass-border);
 }
 
 .cardsList {
@@ -135,5 +238,5 @@
 }
 
 .bottomSpacer {
-  height: calc(var(--bottom-nav-height) + var(--space-lg) + var(--safe-bottom));
+  height: calc(var(--bottom-nav-height) + var(--space-xl) + var(--safe-bottom));
 }

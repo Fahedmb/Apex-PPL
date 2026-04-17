@@ -71,7 +71,7 @@ export default function WorkoutDetail({ workout }: WorkoutDetailProps) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.2 }}
         >
-          <RestTimer color={workout.color} />
+          <RestTimer color={workout.color} workoutName={workout.name} />
         </motion.div>
 
         {/* Important tip */}

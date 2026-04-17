@@ -16,18 +16,21 @@ export default function WorkoutCard({ workout, index }: WorkoutCardProps) {
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: index * 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
+        transition={{ duration: 0.5, delay: index * 0.08, ease: [0.25, 0.46, 0.45, 0.94] }}
       >
         <div className={styles.restCard} id={`workout-card-${workout.id}`}>
+          <div className={styles.restGlow} />
           <div className={styles.restContent}>
-            <span className={styles.restIcon}>{workout.icon}</span>
+            <div className={styles.restIconWrap}>
+              <span className={styles.restIcon}>{workout.icon}</span>
+            </div>
             <div>
               <div className={styles.restHeader}>
-                <span className={styles.restSubtitle}>{workout.subtitle}</span>
-                <h2 className={styles.restName}>{workout.name} Day</h2>
+                <span className={styles.restDay}>{workout.subtitle}</span>
+                <h2 className={styles.restName}>Rest Day</h2>
               </div>
               <p className={styles.restDescription}>
-                Recovery & regeneration. Active recovery like a 20-min walk with full-body stretching accelerates repair.
+                Recovery & regeneration. Active recovery — a 20-min walk with full-body stretching accelerates repair.
               </p>
             </div>
           </div>
@@ -40,49 +43,64 @@ export default function WorkoutCard({ workout, index }: WorkoutCardProps) {
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: index * 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
+      transition={{ duration: 0.5, delay: index * 0.08, ease: [0.25, 0.46, 0.45, 0.94] }}
     >
       <Link href={`/workout/${workout.id}`} className={styles.card} id={`workout-card-${workout.id}`}>
+        {/* Gradient border effect */}
+        <div 
+          className={styles.cardBorderGlow}
+          style={{ background: `linear-gradient(135deg, ${workout.color}20, transparent 60%)` }}
+        />
+        
         <div
           className={styles.glowOrb}
-          style={{ background: `radial-gradient(circle, ${workout.color}20 0%, transparent 70%)` }}
+          style={{ background: `radial-gradient(circle, ${workout.color}15 0%, transparent 70%)` }}
         />
+        
         <div className={styles.header}>
-          <span className={styles.icon}>{workout.icon}</span>
-          <span
-            className={styles.subtitle}
-            style={{ color: workout.color }}
-          >
-            {workout.subtitle}
-          </span>
+          <div className={styles.dayBadge} style={{ 
+            background: `${workout.color}12`,
+            borderColor: `${workout.color}25`,
+          }}>
+            <span className={styles.dayBadgeText} style={{ color: workout.color }}>
+              {workout.subtitle}
+            </span>
+          </div>
         </div>
-        <h2 className={styles.name}>{workout.name}</h2>
-        <p className={styles.muscles}>{workout.muscles}</p>
+
+        <div className={styles.mainContent}>
+          <div className={styles.titleRow}>
+            <span className={styles.icon}>{workout.icon}</span>
+            <h2 className={styles.name}>{workout.name}</h2>
+          </div>
+          <p className={styles.muscles}>{workout.muscles}</p>
+        </div>
+
         <div className={styles.footer}>
           <div className={styles.badgeRow}>
             <div
               className={styles.badge}
               style={{
-                background: `${workout.color}15`,
+                background: `${workout.color}10`,
                 color: workout.color,
-                border: `1px solid ${workout.color}30`,
+                borderColor: `${workout.color}20`,
               }}
             >
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <path d="M12 2v20M2 12h20" strokeLinecap="round" />
+              </svg>
               {workout.exercises.length} exercises
             </div>
-            <div
-              className={styles.badge}
-              style={{
-                background: 'rgba(255,255,255,0.04)',
-                color: 'var(--text-secondary)',
-                border: '1px solid rgba(255,255,255,0.08)',
-              }}
-            >
+            <div className={styles.badge} style={{
+              background: 'rgba(255,255,255,0.03)',
+              color: 'var(--text-secondary)',
+              borderColor: 'rgba(255,255,255,0.06)',
+            }}>
               4×12
             </div>
           </div>
           <div className={styles.arrow} style={{ color: workout.color }}>
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
               <path d="M7 4L13 10L7 16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </div>

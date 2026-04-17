@@ -19,6 +19,20 @@
   background: var(--bg-card-hover);
 }
 
+.cardBorderGlow {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.card:hover .cardBorderGlow,
+.card:active .cardBorderGlow {
+  opacity: 1;
+}
+
 .glowOrb {
   position: absolute;
   top: -40px;
@@ -32,34 +46,49 @@
 }
 
 .header {
+  margin-bottom: var(--space-md);
+}
+
+.dayBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  border: 1px solid;
+}
+
+.dayBadgeText {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.mainContent {
+  margin-bottom: var(--space-lg);
+}
+
+.titleRow {
   display: flex;
   align-items: center;
   gap: var(--space-sm);
-  margin-bottom: var(--space-sm);
+  margin-bottom: var(--space-xs);
 }
 
 .icon {
   font-size: 1.5rem;
 }
 
-.subtitle {
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-}
-
 .name {
-  font-size: 1.75rem;
-  font-weight: 700;
+  font-size: 1.7rem;
+  font-weight: 800;
   letter-spacing: -0.03em;
-  margin-bottom: var(--space-xs);
 }
 
 .muscles {
-  font-size: 0.875rem;
+  font-size: 0.85rem;
   color: var(--text-secondary);
-  margin-bottom: var(--space-lg);
+  padding-left: 2px;
 }
 
 .footer {
@@ -76,11 +105,13 @@
 .badge {
   display: inline-flex;
   align-items: center;
+  gap: 5px;
   padding: 6px 14px;
   border-radius: var(--radius-full);
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 0.02em;
+  border: 1px solid;
 }
 
 .arrow {
@@ -90,8 +121,8 @@
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.05);
-  transition: transform 0.2s ease;
+  background: rgba(255, 255, 255, 0.04);
+  transition: all 0.2s ease;
 }
 
 .card:active .arrow {
@@ -103,43 +134,69 @@
   position: relative;
   padding: var(--space-lg);
   border-radius: var(--radius-lg);
-  background: rgba(120, 144, 156, 0.04);
-  border: 1px dashed rgba(120, 144, 156, 0.2);
+  background: rgba(120, 144, 156, 0.03);
+  border: 1px dashed rgba(120, 144, 156, 0.18);
   overflow: hidden;
+}
+
+.restGlow {
+  position: absolute;
+  top: -30px;
+  right: -30px;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(120, 144, 156, 0.06) 0%, transparent 70%);
+  filter: blur(30px);
+  pointer-events: none;
 }
 
 .restContent {
   display: flex;
   align-items: flex-start;
   gap: var(--space-md);
+  position: relative;
+}
+
+.restIconWrap {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  background: rgba(120, 144, 156, 0.06);
+  border: 1px solid rgba(120, 144, 156, 0.12);
+  flex-shrink: 0;
 }
 
 .restIcon {
-  font-size: 2rem;
-  flex-shrink: 0;
+  font-size: 1.5rem;
 }
 
 .restHeader {
   margin-bottom: var(--space-sm);
 }
 
-.restSubtitle {
-  font-size: 0.7rem;
-  font-weight: 600;
+.restDay {
+  font-size: 0.65rem;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: #78909C;
+  display: block;
+  margin-bottom: 2px;
 }
 
 .restName {
-  font-size: 1.3rem;
+  font-size: 1.25rem;
   font-weight: 700;
   letter-spacing: -0.02em;
   color: var(--text-secondary);
 }
 
 .restDescription {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   color: var(--text-tertiary);
   line-height: 1.5;
 }
@@ -148,10 +205,15 @@
   .card:hover {
     background: var(--bg-card-hover);
     border-color: var(--glass-border-hover);
-    transform: translateY(-2px);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
   }
 
   .card:hover .arrow {
     transform: translateX(3px);
+  }
+
+  .card:hover .cardBorderGlow {
+    opacity: 1;
   }
 }

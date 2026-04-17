@@ -7,40 +7,26 @@ import BottomNav from '@/components/BottomNav';
 import styles from './Home.module.css';
 
 export default function HomePage() {
+  const trainingDays = workouts.filter(w => !w.isRestDay);
+  const totalExercises = trainingDays.reduce((sum, w) => sum + w.exercises.length, 0);
+  const totalSets = totalExercises * 4;
+
   return (
     <div className={styles.page}>
+      {/* Ambient orbs */}
+      <div className={styles.ambientOrb1} />
+      <div className={styles.ambientOrb2} />
+      <div className={styles.ambientOrb3} />
+
       {/* Header Section */}
       <div className={styles.hero}>
-        {/* Ambient glow */}
-        <div className={styles.heroGlow} />
-
         <motion.div
           className={styles.logoContainer}
-          initial={{ opacity: 0, scale: 0.9 }}
+          initial={{ opacity: 0, scale: 0.85 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+          transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
         >
-          <div className={styles.logoIcon}>
-            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-              <path d="M20 4L4 12L20 20L36 12L20 4Z" fill="url(#grad1)" opacity="0.9" />
-              <path d="M4 12V28L20 36V20L4 12Z" fill="url(#grad2)" opacity="0.7" />
-              <path d="M36 12V28L20 36V20L36 12Z" fill="url(#grad3)" opacity="0.5" />
-              <defs>
-                <linearGradient id="grad1" x1="4" y1="4" x2="36" y2="20">
-                  <stop stopColor="#00D4FF" />
-                  <stop offset="1" stopColor="#B388FF" />
-                </linearGradient>
-                <linearGradient id="grad2" x1="4" y1="12" x2="20" y2="36">
-                  <stop stopColor="#00D4FF" />
-                  <stop offset="1" stopColor="#FF8C00" />
-                </linearGradient>
-                <linearGradient id="grad3" x1="36" y1="12" x2="20" y2="36">
-                  <stop stopColor="#B388FF" />
-                  <stop offset="1" stopColor="#FF5C8D" />
-                </linearGradient>
-              </defs>
-            </svg>
-          </div>
+          <div className={styles.logoGlow} />
           <h1 className={styles.logo}>APEX</h1>
         </motion.div>
 
@@ -59,43 +45,76 @@ export default function HomePage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.35 }}
         >
-          1 muscle group · 5 exercises · 4×12
+          7-Day Hypertrophy · 4 Sets × 12 Reps
         </motion.p>
 
-        {/* Weekly overview strip */}
+        {/* Stats row */}
+        <motion.div
+          className={styles.statsRow}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+        >
+          <div className={styles.statItem}>
+            <span className={styles.statValue}>{trainingDays.length}</span>
+            <span className={styles.statLabel}>Training Days</span>
+          </div>
+          <div className={styles.statDivider} />
+          <div className={styles.statItem}>
+            <span className={styles.statValue}>{totalExercises}</span>
+            <span className={styles.statLabel}>Exercises</span>
+          </div>
+          <div className={styles.statDivider} />
+          <div className={styles.statItem}>
+            <span className={styles.statValue}>{totalSets}</span>
+            <span className={styles.statLabel}>Weekly Sets</span>
+          </div>
+        </motion.div>
+
+        {/* Weekly overview strip - enhanced */}
         <motion.div
           className={styles.weekStrip}
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.45 }}
+          transition={{ duration: 0.5, delay: 0.5 }}
         >
-          {workouts.map((w) => (
-            <div
+          {workouts.map((w, i) => (
+            <motion.div
               key={w.id}
               className={`${styles.dayDot} ${w.isRestDay ? styles.dayDotRest : ''}`}
-              style={!w.isRestDay ? { background: `${w.color}25`, borderColor: `${w.color}40` } : undefined}
+              style={!w.isRestDay ? { 
+                background: `${w.color}08`,
+                borderColor: `${w.color}25`,
+              } : undefined}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.55 + i * 0.05 }}
             >
-              <span className={styles.dayNumber} style={!w.isRestDay ? { color: w.color } : undefined}>
+              <span 
+                className={styles.dayNumber} 
+                style={!w.isRestDay ? { color: w.color } : undefined}
+              >
                 {w.dayNumber}
               </span>
               <span className={styles.dayLabel}>
-                {w.isRestDay ? 'Rest' : w.name.slice(0, 4)}
+                {w.isRestDay ? 'Rest' : w.name.length > 5 ? w.name.slice(0, 4) : w.name}
               </span>
-            </div>
+            </motion.div>
           ))}
         </motion.div>
       </div>
 
       {/* Workout Cards */}
       <div className={styles.cardsSection}>
-        <motion.h2
-          className={styles.sectionTitle}
+        <motion.div
+          className={styles.sectionHeader}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.5 }}
+          transition={{ duration: 0.5, delay: 0.6 }}
         >
-          Weekly Split
-        </motion.h2>
+          <h2 className={styles.sectionTitle}>Weekly Split</h2>
+          <span className={styles.sectionBadge}>6 + 1 rest</span>
+        </motion.div>
 
         <div className={styles.cardsList}>
           {workouts.map((workout, index) => (
@@ -104,9 +123,7 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* Bottom spacer for nav */}
       <div className={styles.bottomSpacer} />
-
       <BottomNav />
     </div>
   );
